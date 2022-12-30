@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/e7ebc2fc39.js"
+            crossorigin="anonymous"
+        ></script>
+       
+        <title>Todo List</title>
+        <style type="text/css">
+            * {
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+    outline: 0 !important;
+    box-shadow: 0 !important;
+}
+
+body {
+    background: rgb(200, 250, 119);
+    background: linear-gradient(
+        100deg,
+        rgb(246, 255, 65),
+        rgb(108, 10, 173)
+    );
+    color: rgb(250, 202, 202);
+    min-height: 100vh;
+    margin-bottom: 2rem;
+}
+
+header {
+    text-shadow: 2px 2px 15px rgb(176, 230, 255);
+    font-size: 1.2rem;
+}
+
+header,
+form {
+    min-height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input,
+form button {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    font-size: 1.8rem;
+    border: none;
+
+    background: #fcaeae;
+}
+
+form button {
+    padding: 0.5rem 1rem;
+    color: rgb(200, 133, 246);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background: rgb(203, 144, 243);
+    color: white;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list {
+    min-width: 30%;
+    list-style: none;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem;
+    background: rgb(246, 185, 185);
+    font-size: 1.5rem;
+    transition: all 0.5s ease;
+}
+
+form input,
+.todo {
+    color: rgb(88, 87, 87);
+}
+
+.todo li {
+    flex: 1;
+}
+
+.trash-btn,
+.check-btn {
+    background-color: rgba(74, 21, 110, 1);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.2s all ease;
+}
+
+.check-btn {
+    background-color: rgba(68, 100, 173, 1);
+}
+
+.check-btn:hover {
+    background-color: rgba(68, 100, 173, 1);
+    color: white;
+}
+
+.trash-btn:hover {
+    color: white;
+    background-color: rgba(74, 21, 110, 1);
+}
+
+.todo-item {
+    padding: 0rem 1.2rem;
+}
+
+.fa-trash,
+.fa-check {
+    pointer-events: none;
+}
+
+.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.fall {
+    animation: fall-apart 0.5s ease-out;
+}
+
+@keyframes fall-apart {
+    100% {
+        transform: rotateZ(20deg) translateY(8rem);
+        opacity: 0;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    font-size: 1.2em;
+    color: rgba(74, 21, 110, 1);
+    width: 15rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    background: rgba(74, 21, 110, 1);
+    top: 0;
+    right: 0;
+    padding: 1.2rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.select:hover::after {
+    background-color: white;
+    color: rgba(74, 21, 110, 1);
+}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Todo List WebApp</h1>
+        </header>
+
+        <form>
+            <input type="text" class="todo-input" maxlength="40" />
+            <button class="todo-button" type="submit">
+                <i class="fas fa-plus-square"></i>
+            </button>
+            <div class="select">
+                <select name="todos" class="filter-todo">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="uncompleted">Uncompleted</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="todo-container">
+            <ul class="todo-list"></ul>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+</html>
